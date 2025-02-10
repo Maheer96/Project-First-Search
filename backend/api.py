@@ -5,11 +5,13 @@ import google.generativeai as genai
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 from langdetect import detect
+from flask_cors import CORS
 
 # Loading .env variables
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 # APIs and DB setup
 GITHUB_BASE_URL = "https://api.github.com/search/repositories" # Base URL for GH Repo API
@@ -48,7 +50,7 @@ def chatbot():
     Example Output: AI, finance, automation, chatbot, investment
     """
     response = model.generate_content(prompt)
-    keywords = response.text.strip().replace("{", "").replace("}", "") # filter a bunch of stuff since Gemini can be strange
+    keywords = response.text.strip().replace("{", "").replace("}", "") # Filter a bunch of stuff since Gemini output can give unwanted characters
     return jsonify({"keywords": keywords})
     
 # Smart searching algorithm
@@ -134,7 +136,7 @@ def bookmark_repo():
         description=data['description']
     )
     db.session.add(new_bookmark)
-    db.session.commit
+    db.session.commit()
     return jsonify({"message": "Repository bookmarked successfully"})
 
 @app.route('/bookmarks', methods=['GET'])
