@@ -1,0 +1,51 @@
+/* Card styling */
+.card {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Card title */
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* Card description */
+  .card-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  /* Repository link */
+  .card-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  
+  .card-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Star count */
+  .card-stars {
+    font-size: 1rem;
+    color: #888;
+    margin-top: 0.5rem;
+  }
+  
