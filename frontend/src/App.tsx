@@ -28,7 +28,7 @@ function App() {
 
       const searchResponse = await axios.get(`http://127.0.0.1:5000/smart_search?keywords=${encodeURIComponent(keywords)}`);
       setRepos(searchResponse.data);
-      setVisibleCount(5);
+      setVisibleCount(6);
     } catch (err) {
       console.error(err);
       setError("Failed to fetch repositories. Please try again.");
@@ -38,7 +38,7 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 5);
+    setVisibleCount((prev) => prev + 6);
   };
 
   return (

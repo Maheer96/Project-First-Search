@@ -1,18 +1,16 @@
-/* Button styles */
 .load-more-btn {
-    margin-top: 1.5rem;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-  
-  .load-more-btn:hover {
-    background: #218838;
-    transform: translateY(-2px);
-  }
-  
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: #03dac6;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.load-more-btn:hover {
+  background: #02c5b4;
+  transform: translateY(-2px);
+}
