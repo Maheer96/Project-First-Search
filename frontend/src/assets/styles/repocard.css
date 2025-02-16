@@ -1,5 +1,5 @@
 .card {
-  background: #1e1e1e; /* Dark Gray */
+  background: #1e1e1e;
   border: 1px solid #333;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
@@ -7,6 +7,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -17,7 +18,7 @@
 .card-title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #03dac6; /* Cyan */
+  color: #03dac6;
   margin-bottom: 1rem;
 }
 

@@ -26,11 +26,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         placeholder="Enter a project idea..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={handleKeyPress}  // 👈 Listen for Enter key
+        onKeyDown={handleKeyPress} 
         className="input-box"
       />
       <button onClick={handleSearch} className="search-btn">
-        Search Repositories
+        ideate
       </button>
     </div>
   );

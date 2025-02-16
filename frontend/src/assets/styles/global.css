@@ -1,31 +1,51 @@
-/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  font-family: "Cabin", sans-serif;
-  background-color: #121212; /* Deep Black */
-  color: #e0e0e0; /* Soft White */
+  font-family: "Poppins", sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  font-family: "Cabin", sans-serif;
-  font-weight: bold;
+  width: 100%;
+  overflow-x: hidden;
+  text-align: center; 
 }
 
-.container {
-  width: 100vw;
-  padding: 2rem;
+.app-container {
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  background: #121212; 
+  justify-content: center;
+  opacity: 0;  
+  transform: translateY(20px); 
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-/* Utility Classes */
+.app-container.visible {
+  opacity: 1;  
+  transform: translateY(0);
+}
+
+
 .text-center {
   text-align: center;
+}
+
+.title-text {
+  font-size: 3rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.5rem;
 }
 
 .hidden {
@@ -33,5 +53,5 @@ body {
 }
 
 .text-accent {
-  color: #03dac6; /* Sleek Cyan Accent */
+  color: #03dac6;
 }

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Hero from "./components/Hero";
 import SearchBar from "./components/SearchBar";
 import RepoList from "./components/RepoList";
 import LoadMoreButton from "./components/LoadMoreButton";
@@ -14,9 +15,14 @@ interface Repository {
 
 function App() {
   const [repos, setRepos] = useState<Repository[]>([]);
-  const [visibleCount, setVisibleCount] = useState<number>(5);
+  const [visibleCount, setVisibleCount] = useState<number>(6);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [showChatbot, setShowChatbot] = useState(false);
+
+  useEffect(() => {
+    console.log("Chatbot visibility:", showChatbot);
+  }, [showChatbot]);
 
   const handleSearch = async (query: string) => {
     setError(null);
@@ -42,17 +48,16 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1 className="text-3xl font-bold mb-6">Project-First Search</h1>
-
-      <SearchBar onSearch={handleSearch} />
-
-      {loading && <p className="loading-spinner">Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
-
-      <RepoList repos={repos} visibleCount={visibleCount} />
-
-      <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
+    <div>
+      {!showChatbot && <Hero onFadeComplete={() => setTimeout(() => setShowChatbot(true), 500)} />}
+      <div className={`app-container ${showChatbot ? "visible" : ""}`}>
+        <h1 className="title-text">Project-First Search</h1>
+        <SearchBar onSearch={handleSearch} />
+        {loading && <p className="loading-spinner">Loading...</p>}
+        {error && <p className="text-red-500">{error}</p>}
+        <RepoList repos={repos} visibleCount={visibleCount} />
+        <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
+      </div>
     </div>
   );
 }
