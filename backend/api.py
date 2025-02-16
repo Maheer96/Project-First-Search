@@ -62,7 +62,7 @@ def smart_search_github():
     
     model = genai.GenerativeModel("gemini-pro")
     prompt = f"""
-    Given the keywords: {keywords}, classify them into two categories:
+    Given the keywords: {keywords}, classify them into these two categories:
     1. High-importance keywords (use AND)
     2. Lower-importance keywords (use OR)
     
