@@ -17,6 +17,11 @@ body {
   width: 100%;
   overflow-x: hidden;
   text-align: center; 
+  overflow: hidden;
+}
+
+body.show-content {
+  overflow-y: auto;
 }
 
 .app-container {
@@ -26,13 +31,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  opacity: 0;  
-  transform: translateY(20px); 
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  padding-top: 80px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
 }
 
 .app-container.visible {
-  opacity: 1;  
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -43,9 +49,9 @@ body {
 
 .title-text {
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 200;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-  margin-bottom: 1.5rem;
+  margin-bottom: -1.5rem; /* Negative margin */
 }
 
 .hidden {

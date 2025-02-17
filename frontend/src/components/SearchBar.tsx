@@ -23,7 +23,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     <div className="input-section">
       <input
         type="text"
-        placeholder="Enter a project idea..."
+        placeholder="what's on your mind?"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={handleKeyPress} 
