@@ -1,8 +1,22 @@
+.repo-list-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 60vh; 
+  overflow-y: auto; 
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  width: 100%;
-  align-items: stretch; 
+  gap: 1.5rem; 
+  justify-content: center;
+}
+
+body {
+  overflow-y: auto;
 }

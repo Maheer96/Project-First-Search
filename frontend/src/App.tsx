@@ -22,14 +22,16 @@ function App() {
   const [showChatbot, setShowChatbot] = useState(false);
   const [animateNavbar, setAnimateNavbar] = useState(false);
   const [animateApp, setAnimateApp] = useState(false);
+  const [replayHero, setReplayHero] = useState(false);
 
   useEffect(() => {
     if (showChatbot) {
-      document.body.style.overflow = "auto";
-      setTimeout(() => setAnimateNavbar(true), 500); 
-      setTimeout(() => setAnimateApp(true), 800);
+      document.body.classList.add("show-content");
+
+      setTimeout(() => setAnimateNavbar(true), 500);
+      setTimeout(() => setAnimateApp(true), 900);
     } else {
-      document.body.style.overflow = "hidden";
+      document.body.classList.remove("show-content");
     }
   }, [showChatbot]);
 
@@ -58,22 +60,44 @@ function App() {
     setVisibleCount((prev) => prev + 6);
   };
 
+  const restartHero = () => {
+    setReplayHero(true);
+    setShowChatbot(false);
+    setAnimateNavbar(false);
+    setAnimateApp(false);
+    document.body.classList.remove("show-content");
+
+    setTimeout(() => {
+      setReplayHero(false);
+    }, 100);
+  };
+
+  const goHome = () => {
+    setRepos([]); 
+    setShowChatbot(true);
+    setReplayHero(false);
+  };
+
   return (
     <div>
-      {!showChatbot && <Hero onFadeComplete={() => setShowChatbot(true)} />}
-      
-      <div className={`navbar-wrapper ${animateNavbar ? "slide-in" : ""}`}>
-        <Navbar />
-      </div>
+      {!showChatbot && !replayHero && <Hero onFadeComplete={() => setShowChatbot(true)} />}
 
-      <div className={`app-container ${animateApp ? "visible" : ""}`}>
-        <h1 className="title-text">Project-First Search</h1>
-        <SearchBar onSearch={handleSearch} />
-        {loading && <p className="loading-spinner">Loading...</p>}
-        {error && <p className="text-red-500">{error}</p>}
-        <RepoList repos={repos} visibleCount={visibleCount} />
-        <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
-      </div>
+      {showChatbot && (
+        <div className={`navbar-wrapper ${animateNavbar ? "slide-in" : ""}`}>
+          <Navbar onReplayHero={restartHero} onGoHome={goHome} />
+        </div>
+      )}
+
+      {showChatbot && (
+        <div className={`app-container ${animateApp ? "visible" : ""}`}>
+          <h1 className="title-text">Project-First Search</h1>
+          <SearchBar onSearch={handleSearch} />
+          {loading && <p className="loading-spinner">Loading...</p>}
+          {error && <p className="text-red-500">{error}</p>}
+          <RepoList repos={repos} visibleCount={visibleCount} />
+          <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
+        </div>
+      )}
     </div>
   );
 }
