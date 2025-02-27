@@ -57,9 +57,12 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 6);
+    setVisibleCount((prev) => prev + 8);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" }); 
+    }, 200); 
   };
-
+  
   const restartHero = () => {
     setReplayHero(true);
     setShowChatbot(false);

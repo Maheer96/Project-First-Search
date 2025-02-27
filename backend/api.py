@@ -42,7 +42,7 @@ def chatbot():
     if not user_input:
         return jsonify({"error": "No input provided"}), 400
     
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("gemini-1.5-pro-latest")
     prompt = f"""
     Take this project idea: "{user_input}".
     Extract exactly 3 to 5 relevant keywords, separated by commas, without curly braces, avoiding generic terms.
@@ -60,7 +60,7 @@ def smart_search_github():
     if not keywords:
         return jsonify({"error": "No keywords provided"}), 400
     
-    model = genai.GenerativeModel("gemini-pro")
+    model = genai.GenerativeModel("gemini-1.5-pro-latest")
     prompt = f"""
     Given the keywords: {keywords}, classify them into these two categories:
     1. High-importance keywords (use AND)
