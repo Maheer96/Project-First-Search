@@ -26,12 +26,16 @@ function App() {
 
   useEffect(() => {
     if (showChatbot) {
-      document.body.classList.add("show-content");
+      setTimeout(() => {
+        document.body.classList.remove("hero-active");
+        document.body.classList.add("show-content");
+      }, 350); 
 
       setTimeout(() => setAnimateNavbar(true), 500);
       setTimeout(() => setAnimateApp(true), 900);
     } else {
       document.body.classList.remove("show-content");
+      document.body.classList.add("hero-active");
     }
   }, [showChatbot]);
 
@@ -57,18 +61,20 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 8);
+    setVisibleCount((prev) => prev + 6);
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" }); 
-    }, 200); 
+    }, 300); 
   };
   
+
   const restartHero = () => {
     setReplayHero(true);
     setShowChatbot(false);
     setAnimateNavbar(false);
     setAnimateApp(false);
     document.body.classList.remove("show-content");
+    document.body.classList.add("hero-active");
 
     setTimeout(() => {
       setReplayHero(false);
@@ -76,7 +82,7 @@ function App() {
   };
 
   const goHome = () => {
-    setRepos([]); 
+    setRepos([]);
     setShowChatbot(true);
     setReplayHero(false);
   };
@@ -85,22 +91,18 @@ function App() {
     <div>
       {!showChatbot && !replayHero && <Hero onFadeComplete={() => setShowChatbot(true)} />}
 
-      {showChatbot && (
-        <div className={`navbar-wrapper ${animateNavbar ? "slide-in" : ""}`}>
-          <Navbar onReplayHero={restartHero} onGoHome={goHome} />
-        </div>
-      )}
+      <div className={`navbar-wrapper ${animateNavbar ? "slide-in" : ""}`}>
+        <Navbar onReplayHero={restartHero} onGoHome={goHome} />
+      </div>
 
-      {showChatbot && (
-        <div className={`app-container ${animateApp ? "visible" : ""}`}>
-          <h1 className="title-text">Project-First Search</h1>
-          <SearchBar onSearch={handleSearch} />
-          {loading && <p className="loading-spinner">Loading...</p>}
-          {error && <p className="text-red-500">{error}</p>}
-          <RepoList repos={repos} visibleCount={visibleCount} />
-          <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
-        </div>
-      )}
+      <div className={`app-container ${animateApp ? "visible" : ""}`}>
+        <h1 className="title-text">Project-First Search</h1>
+        <SearchBar onSearch={handleSearch} />
+        {loading && <p className="loading-spinner">Loading...</p>}
+        {error && <p className="text-red-500">{error}</p>}
+        <RepoList repos={repos} visibleCount={visibleCount} />
+        <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
+      </div>
     </div>
   );
 }

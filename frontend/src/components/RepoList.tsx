@@ -17,7 +17,9 @@ const RepoList: React.FC<RepoListProps> = ({ repos, visibleCount }) => {
   return (
     <div className="cards-container">
       {repos.slice(0, visibleCount).map((repo, index) => (
-        <RepoCard key={index} repo={repo} />
+        <div key={index} className="repo-card"> {/* Wrap RepoCard in div */}
+          <RepoCard repo={repo} />
+        </div>
       ))}
     </div>
   );

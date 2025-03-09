@@ -50,6 +50,8 @@
 .navbar-logo {
     height: 120px;
     width: auto;
+    margin: 0 auto;
+    margin-left: 630px;
 }
 
 .icon {
@@ -82,4 +84,4 @@
   .nav-btn:hover .tooltip {
     opacity: 1;
   }
-  
+

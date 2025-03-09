@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: #121212;
@@ -13,16 +14,36 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 00vh;
+  min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  text-align: center; 
-  overflow: hidden;
+  text-align: center;
+  transition: background-image 3s ease-in-out, opacity 3s ease-in-out;
+}
+
+body.hero-active {
+  background-image: none;
+  opacity: 0;
 }
 
 body.show-content {
+  background-image: url("https://www.transparenttextures.com/patterns/cartographer.png");
+  background-size: 400px;
+  background-repeat: repeat;
+  animation: moveBackground 60s linear infinite;
+  opacity: 1;
   overflow-y: auto;
 }
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 300px 300px; 
+  }
+}
+
 
 .app-container {
   width: 100%;
