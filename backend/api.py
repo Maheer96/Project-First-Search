@@ -122,23 +122,5 @@ def smart_search_github():
     
     return jsonify(filtered_repos)
 
-# Bookmarking system
-@app.route('/bookmark', methods=['POST'])
-def bookmark_repo():
-    data = request.json
-    if not all(k in data for k in ["repo_name", "repo_url", "description"]):
-        return jsonify({"error": "Missing data fields"}), 400
-    
-    db.session.add(Bookmark(**data))
-    db.session.commit()
-    return jsonify({"message": "Repository bookmarked successfully"})
-
-@app.route('/bookmarks', methods=['GET'])
-def get_bookmarks():
-    return jsonify([
-        {"repo_name": b.repo_name, "repo_url": b.repo_url, "description": b.description}
-        for b in Bookmark.query.all()
-    ])
-
 if __name__ == '__main__':
     app.run(debug=True)
