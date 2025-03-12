@@ -111,7 +111,7 @@ def smart_search_github():
                 if detect(description) != 'en':
                     continue  # Skip non-English descriptions
             except:
-                continue  # Skip descriptions with errors
+                continue  # Skip descriptions with errors 
             
         filtered_repos.append({
             "name": repo["name"],
