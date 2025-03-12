@@ -32,7 +32,10 @@ body.show-content {
   background-repeat: repeat;
   animation: moveBackground 60s linear infinite;
   opacity: 1;
-  overflow-y: auto;
+}
+
+body.ready {
+  overflow-y: hidden; /* Critical for hiding the scroll bar*/
 }
 
 @keyframes moveBackground {
@@ -43,7 +46,6 @@ body.show-content {
     background-position: 300px 300px; 
   }
 }
-
 
 .app-container {
   width: 100%;
@@ -61,7 +63,7 @@ body.show-content {
 .app-container.visible {
   opacity: 1;
   transform: translateY(0);
-  overflow: auto;
+  overflow: hidden;
   max-height: none;
 }
 
@@ -71,10 +73,11 @@ body.show-content {
 }
 
 .title-text {
-  font-size: 3rem;
-  font-weight: 200;
+  font-size: 3.5rem;
+  font-weight: 300;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   margin-bottom: -1.5rem; /* Negative margin */
+  font-family: 'DM Sans', sans-serif !important;
 }
 
 .hidden {
@@ -83,4 +86,17 @@ body.show-content {
 
 .text-accent {
   color: #03dac6;
+}
+
+.loading-spinner {
+  font-size: .75rem;
+  color: white;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.loading-spinner.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

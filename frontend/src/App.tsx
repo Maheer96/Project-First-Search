@@ -30,14 +30,20 @@ function App() {
         document.body.classList.remove("hero-active");
         document.body.classList.add("show-content");
       }, 350); 
-
+  
       setTimeout(() => setAnimateNavbar(true), 500);
       setTimeout(() => setAnimateApp(true), 900);
+  
+      // Ensure chatbot remains active after transition
+      setTimeout(() => {
+        document.body.classList.add("ready"); // Enables scrolling *after* transition
+      }, 1500); 
+  
     } else {
-      document.body.classList.remove("show-content");
+      document.body.classList.remove("show-content", "ready"); // Remove scrolling but keep chatbot
       document.body.classList.add("hero-active");
     }
-  }, [showChatbot]);
+  }, [showChatbot]);  
 
   const handleSearch = async (query: string) => {
     setError(null);
@@ -59,13 +65,14 @@ function App() {
       setLoading(false);
     }
   };
-
+  
   const handleLoadMore = () => {
     setVisibleCount((prev) => prev + 6);
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" }); 
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     }, 300); 
   };
+  
   
 
   const restartHero = () => {
@@ -98,7 +105,7 @@ function App() {
       <div className={`app-container ${animateApp ? "visible" : ""}`}>
         <h1 className="title-text">Project-First Search</h1>
         <SearchBar onSearch={handleSearch} />
-        {loading && <p className="loading-spinner">Loading...</p>}
+        <p className={`loading-spinner ${loading ? "visible" : ""}`}>Loading...</p>
         {error && <p className="text-red-500">{error}</p>}
         <RepoList repos={repos} visibleCount={visibleCount} />
         <LoadMoreButton onLoadMore={handleLoadMore} hasMore={repos.length > visibleCount} />
