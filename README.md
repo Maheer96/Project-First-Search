@@ -26,7 +26,6 @@
 ✅ **GitHub API Integration** – Retrieves trending repositories based on search criteria  
 ✅ **Smooth UI & Hero Transition** – Engaging landing page experience  
 ✅ **Dynamic Search & Results** – Fades in repositories for a seamless experience  
-✅ **Bookmarking System** _(Removed but can be re-implemented if needed)_
 
 ---
 
@@ -129,6 +128,7 @@ GITHUB_TOKEN=your-github-api-token
 * 🌍 User Profiles – Save search history across devices
 * 🎯 Advanced Filtering – Filter by repo size, stars, forks, and language
 * 🏆 Trending Projects Integration – Suggest AI-generated project ideas
+* ✍🏼 Perfect User Experience –  Current implementation still contains a few bugs in need of fixing
 
 ---
 

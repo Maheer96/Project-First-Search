@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+html {
+  background-color: #121212;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background-color: #121212;
@@ -17,6 +21,7 @@ body {
   min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
+  overflow-y: auto;
   text-align: center;
   transition: background-image 3s ease-in-out, opacity 3s ease-in-out;
 }
@@ -34,10 +39,6 @@ body.show-content {
   opacity: 1;
 }
 
-body.ready {
-  overflow-y: hidden; /* Critical for hiding the scroll bar*/
-}
-
 @keyframes moveBackground {
   0% {
     background-position: 0 0;
@@ -49,21 +50,25 @@ body.ready {
 
 .app-container {
   width: 100%;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 80px;
+  padding-top: 100px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 2s ease-in-out, transform 2s ease-in-out;
 }
 
+.app-container.with-results {
+  padding-top: 450px; /* Adjust if needed */
+}
+
 .app-container.visible {
   opacity: 1;
   transform: translateY(0);
-  overflow: hidden;
+  overflow: visible;
   max-height: none;
 }
 
@@ -99,4 +104,25 @@ body.ready {
 .loading-spinner.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #121212;
+  z-index: 9999;
+  animation: fadeOverlayOut 1.5s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeOverlayOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

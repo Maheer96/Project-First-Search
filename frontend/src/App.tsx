@@ -67,12 +67,14 @@ function App() {
   };
   
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 6);
-    setTimeout(() => {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-    }, 300); 
-  };
+    const currentScroll = window.scrollY;
   
+    setVisibleCount((prev) => prev + 6);
+  
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: currentScroll, behavior: "auto" });
+    });
+  };
   
 
   const restartHero = () => {
@@ -96,13 +98,16 @@ function App() {
 
   return (
     <div>
+      {/* 👇 Black overlay that fades out */}
+      {!showChatbot && <div className="fade-overlay" />}
+  
       {!showChatbot && !replayHero && <Hero onFadeComplete={() => setShowChatbot(true)} />}
-
+  
       <div className={`navbar-wrapper ${animateNavbar ? "slide-in" : ""}`}>
         <Navbar onReplayHero={restartHero} onGoHome={goHome} />
       </div>
-
-      <div className={`app-container ${animateApp ? "visible" : ""}`}>
+  
+      <div className={`app-container ${animateApp ? "visible" : ""} ${repos.length > 0 ? "with-results" : ""}`}>
         <h1 className="title-text">Project-First Search</h1>
         <SearchBar onSearch={handleSearch} />
         <p className={`loading-spinner ${loading ? "visible" : ""}`}>Loading...</p>
@@ -112,6 +117,7 @@ function App() {
       </div>
     </div>
   );
+  
 }
 
 export default App;
