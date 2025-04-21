@@ -50,11 +50,11 @@ function App() {
     setLoading(true);
 
     try {
-      const chatbotResponse = await axios.post("http://127.0.0.1:5000/chatbot", { input: query });
+      const chatbotResponse = await axios.post("https://projectfirstsearch.fly.dev/chatbot", { input: query });
       const keywords = chatbotResponse.data.keywords;
 
       const searchResponse = await axios.get(
-        `http://127.0.0.1:5000/smart_search?keywords=${encodeURIComponent(keywords)}`
+        `https://projectfirstsearch.fly.dev/smart_search?keywords=${encodeURIComponent(keywords)}`
       );
       setRepos(searchResponse.data);
       setVisibleCount(6);
