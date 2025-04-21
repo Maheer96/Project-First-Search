@@ -3,6 +3,9 @@
 ![GitHub stars](https://img.shields.io/github/stars/Maheer96/Project-First-Search.svg) 
 ![GitHub forks](https://img.shields.io/github/forks/Maheer96/Project-First-Search.svg) 
 ![GitHub license](https://img.shields.io/github/license/Maheer96/Project-First-Search.svg)
+![Live Demo](https://img.shields.io/badge/demo-live-green?style=flat&logo=github) 
+
+🌐 **Live at:** https://maheer96.github.io/Project-First-Search/
 
 ## 🌟 About the Project
 
@@ -16,7 +19,9 @@
 
 ## 🎥 Demo Video
 
-🚧 _Demo coming soon!_ _(Insert video link here)_
+🚀 **Live Application:** https://maheer96.github.io/Project-First-Search/
+
+https://github.com/user-attachments/assets/bf0ccb35-5f73-45c9-858f-b3cd8c7e4e30
 
 ---
 
@@ -117,7 +122,10 @@ GITHUB_TOKEN=your-github-api-token
 ---
 
 ## 📊 Workflow Diagram
-🚧 _A workflow image is coming soon! (Paste an image below)_
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/76977121-bd7f-4e57-902d-3d881703e1eb" alt="PFS Workflow Diagram">
+</div>
 
 ---
 
